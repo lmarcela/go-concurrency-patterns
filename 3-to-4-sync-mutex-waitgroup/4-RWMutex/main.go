@@ -24,6 +24,9 @@ func Balance(lock *sync.RWMutex) int {
 	return b
 }
 
+// 1 Deposit --> Writing (Race condition)
+// N Balance() --> Read
+
 func main() {
 	var wg sync.WaitGroup
 	var lock sync.RWMutex
@@ -31,6 +34,8 @@ func main() {
 	for i := 1; i <= 5; i++ {
 		wg.Add(1)
 		go Deposit(i*100, &wg, &lock)
+
+		fmt.Println(Balance(&lock))
 	}
 	wg.Wait()
 	fmt.Println(Balance(&lock))
