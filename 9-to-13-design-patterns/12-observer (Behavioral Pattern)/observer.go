@@ -12,8 +12,8 @@ type Observer interface {
 	updateValue(string)
 }
 
-// Item -> No disponible
-// Item -> Avise -> HAY ITEM PS5, RTX
+// Item -> Unavailable
+// Item -> Notify -> THERE IS ITEM PS5, RTX
 
 type Item struct {
 	observers []Observer

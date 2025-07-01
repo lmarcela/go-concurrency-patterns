@@ -34,8 +34,13 @@ func (bpa *BankPaymentAdapter) Pay() {
 func main() {
 	cash := &CashPayment{}
 	ProcessPayment(cash)
+	// Uncommenting the following lines will cause a compilation error
+	// because BankPayment does not implement the Payment interface.
 	// bank := &BankPayment{}
 	// ProcessPayment(bank)
+
+	// Using the adapter to make BankPayment compatible with Payment interface
+	// This allows us to use BankPayment where Payment is expected.
 	bpa := &BankPaymentAdapter{
 		bankAccount: 5,
 		BankPayment: &BankPayment{},

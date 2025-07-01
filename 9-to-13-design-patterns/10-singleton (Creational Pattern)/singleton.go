@@ -18,8 +18,8 @@ var db *Database
 var lock sync.Mutex
 
 func getDatabaseIntance() *Database {
-	lock.Lock()
-	defer lock.Unlock()
+	lock.Lock()         // Ensure that only one goroutine can access this section at a time
+	defer lock.Unlock() // Release the lock after the function completes
 	if db == nil {
 		fmt.Println("Creating DB Connection")
 		db = &Database{}
