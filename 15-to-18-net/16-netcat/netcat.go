@@ -15,6 +15,10 @@ var (
 )
 
 func main() {
+	// You can try go run netcat.go --host=scanme.nmap.org --port=80
+	// or go run netcat.go --host=scanme.webscantest.com --port=80
+	// or go run netcat.go --host=scanme.webscantest.com --port=443
+	// or go run netcat.go --host=scanme.webscantest.com --port=443 -- < /etc/hosts
 	flag.Parse()
 	conn, err := net.Dial("tcp", fmt.Sprintf("%s:%d", *host, *port))
 	if err != nil {

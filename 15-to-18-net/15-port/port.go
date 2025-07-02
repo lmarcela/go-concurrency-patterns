@@ -10,6 +10,7 @@ import (
 var site = flag.String("site", "scanme.nmap.org", "url to scan")
 
 func main() {
+	// You can try go run port.go --site=scanme.webscantest.com
 	flag.Parse()
 	var wg sync.WaitGroup
 	for i := 0; i < 65535; i++ {
